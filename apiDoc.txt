@@ -1,0 +1,135 @@
+*************************** Get all movie ******************
+
+CURL
+ curl --location 'localhost:3001/api/v1/movies'
+
+Response
+{
+    "message": "Request has been processed successfully.",
+    "data": [
+        {
+            "_id": "65eda011d62c9c6fd6305ad7",
+            "uuid": "f7d932b1-2b4c-4552-8e98-f281cf4c7996",
+            "movieId": "movie-10",
+            "movieName": "All india rank",
+            "movieTitle": "AIR",
+            "movieDescription": "Super hit",
+            "movieGenre": "Motivational",
+            "movieLink": "air-movie-link",
+            "movieRating": 4.5,
+            "createdDate": "2024-03-10T11:57:05.830Z",
+            "updatedDate": "2024-03-10T12:28:23.311Z",
+            "__v": 0
+        }
+    ]
+}
+
+
+*************************** Get movie by title or genre ******************
+
+CURL
+curl --location 'localhost:3001/api/v1/movies?q=AIR'
+
+Response
+{
+    "message": "Request has been processed successfully.",
+    "data": [
+        {
+            "_id": "65eda011d62c9c6fd6305ad7",
+            "uuid": "f7d932b1-2b4c-4552-8e98-f281cf4c7996",
+            "movieId": "movie-10",
+            "movieName": "All india rank",
+            "movieTitle": "AIR",
+            "movieDescription": "Super hit",
+            "movieGenre": "Motivational",
+            "movieLink": "air-movie-link",
+            "movieRating": 4.5,
+            "createdDate": "2024-03-10T11:57:05.830Z",
+            "updatedDate": "2024-03-10T12:28:23.311Z",
+            "__v": 0
+        }
+    ]
+}
+
+
+*************************** Add movie(admin role required) ******************
+
+CURL
+curl --location 'localhost:3001/api/v1/movies' \
+--header 'admin-token: a1b1c1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "movieId": "movie-10",
+    "movieName": "All india rank",
+    "movieTitle": "AIR",
+    "movieDescription": "Super hit",
+    "movieGenre": "Motivational",
+    "movieLink": "air-movie-link",
+    "movieRating": 4.5
+}'
+
+Response
+{
+    "message": "Record has been created successfully.",
+    "data": {
+        "uuid": "5edad047-d59a-475f-bdd8-cbcfbf07341e",
+        "movieId": "movie-10",
+        "movieName": "All india rank",
+        "movieTitle": "AIR",
+        "movieDescription": "Super hit",
+        "movieGenre": "Motivational",
+        "movieLink": "air-movie-link",
+        "movieRating": 4.5,
+        "createdDate": "2024-03-10T12:15:43.233Z",
+        "updatedDate": "2024-03-10T12:15:43.233Z",
+        "_id": "65eda46f0dce25fbd0d4ad29",
+        "__v": 0
+    }
+}
+
+
+*************************** Update movie(admin role required) ******************
+
+CURL
+curl --location --request PUT 'localhost:3001/api/v1/movies/f7d932b1-2b4c-4552-8e98-f281cf4c7996' \
+--header 'admin-token: a1b1c1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "movieTitle": "AIR",
+    "movieDescription": "Super hit",
+    "movieGenre": "Motivational",
+    "movieLink": "air-movie-link",
+    "movieRating": 4.5
+}'
+
+Response
+{
+    "message": "Request has been processed successfully.",
+    "data": {
+        "_id": "65eda011d62c9c6fd6305ad7",
+        "uuid": "f7d932b1-2b4c-4552-8e98-f281cf4c7996",
+        "movieId": "movie-10",
+        "movieName": "All india rank",
+        "movieTitle": "AIR",
+        "movieDescription": "Super hit",
+        "movieGenre": "Motivational",
+        "movieLink": "air-movie-link",
+        "movieRating": 4.5,
+        "createdDate": "2024-03-10T11:57:05.830Z",
+        "updatedDate": "2024-03-10T12:28:23.311Z",
+        "__v": 0
+    }
+}
+
+
+*************************** Delete movie(admin role required) ******************
+
+CURL
+curl --location --request DELETE 'localhost:3001/api/v1/movies/5edad047-d59a-475f-bdd8-cbcfbf07341e' \
+--header 'admin-token: a1b1c1'
+
+Response
+{
+    "message": "Request has been processed successfully."
+}
+

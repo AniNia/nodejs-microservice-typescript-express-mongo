@@ -1,6 +1,6 @@
 start app
 
-1. clone the repo https://github.com/AniNia/nodes-microservice-typescript-express-mongo.git
+1. clone the repo https://github.com/AniNia/nodejs-microservice-typescript-express-mongo.git
 2. cd path
 3. npm i
 4. check env and change per need
